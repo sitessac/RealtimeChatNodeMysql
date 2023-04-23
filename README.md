@@ -1,5 +1,10 @@
 # RealtimeChatNodeMysql
-Realtime Web based Chat in Node JS &amp; MySQL
+
+Chat in Node JS & MySQL 1
+
+modificações e melhoramentos do original:
+
+Realtime Web based Chat in Node JS e MySQL
 
 https://youtu.be/cXQGJ_8QYK0
 
