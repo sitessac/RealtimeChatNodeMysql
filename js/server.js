@@ -35,3 +35,11 @@ io.on("connection", function (socket) {
         io.emit("user_connected", username);
     });
 });
+
+// listen from client inside IO "connection" event
+socket.on("send_message", function (data) {
+    // send event to receiver
+    var socketId = users[data.receiver];
+ 
+    io.to(socketId).emit("new_message", data);
+});
