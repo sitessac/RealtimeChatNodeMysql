@@ -1,58 +1,70 @@
 <?php 
-<pre class="wp-block-syntaxhighlighter-code"><!-- include jquery and socket IO -->
+
 /*
-baixar os dois a baixo e colocar na pasta js
-<script src="js/jquery.js"></script>
-<script src="js/socket.io.js"></script>
-*/
     <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
- 
+ */
+
+<pre class="wp-block-syntaxhighlighter-code">
+
+
+      <!-- include jquery and socket IO -->
+      <script src="js/jquery.js"></script>
+      <script src="js/socket.io.js"></script>
+
+
+ <form onsubmit="return enterName();">
+  <input id="name" placeholder="Enter name">
+  <input type="submit">
+ </form>
+
+<ul id="users"></ul>
+
+
+<form onsubmit="return sendMessage();">
+  <input id="message" placeholder="Enter message">
+  <input type="submit">
+</form>
+
+<ul id="messages"></ul>
+
+
 <script>
   // creating io instance
   var io = io("http://191.252.223.139:6000");
- 
-  var receiver = "";
-  var sender = "";
- 
-</script></pre>
 
+var receiver = "";
+var sender = "";
 
-<pre class="wp-block-syntaxhighlighter-code"><form onsubmit="return enterName();">
-  <input id="name" placeholder="Enter name">
-  <input type="submit">
-</form>
- 
-<ul id="users"></ul>
-     
-<script>
-    function enterName() {
+ function enterName() {
         // get username
         var name = document.getElementById("name").value;
  
         // send it to server
         io.emit("user_connected", name);
- 
+
         // save my name in global variable
         sender = name;
- 
-        // prevent the form from submitting
+
+       // prevent the form from submitting
         return false;
     }
- 
-    // listen from server
+
+
+ // listen from server
     io.on("user_connected", function (username) {
         var html = "";
         html += "<li><button onclick='onUserSelected(this.innerHTML);'>" + username + "</button></li>";
  
         document.getElementById("users").innerHTML += html;
     });
- 
-    <pre class="wp-block-syntaxhighlighter-code">function onUserSelected(username) {
-    // save selected user in global variable
-    receiver = username;
- 
-    // call an ajax
+
+
+   function onUserSelected(username) {
+   // save selected user in global variable
+   receiver = username;
+
+   // call an ajax
     $.ajax({
       url: "http://localhost:3000/get_messages",
       method: "POST",
@@ -73,22 +85,11 @@ baixar os dois a baixo e colocar na pasta js
         // append in list
         document.getElementById("messages").innerHTML += html;
       }
-    });
-}</pre>
-
-</script></pre>
+    });    
+}
 
 
-
-<pre class="wp-block-syntaxhighlighter-code"><form onsubmit="return sendMessage();">
-  <input id="message" placeholder="Enter message">
-  <input type="submit">
-</form>
- 
-<ul id="messages"></ul>
-     
-<script>
-    function sendMessage() {
+        function sendMessage() {
         // get message
         var message = document.getElementById("message").value;
  
@@ -108,7 +109,6 @@ baixar os dois a baixo e colocar na pasta js
         // prevent form from submitting
         return false;
     }
- 
     // listen from server
     io.on("new_message", function (data) {
         var html = "";
@@ -116,5 +116,8 @@ baixar os dois a baixo e colocar na pasta js
  
         document.getElementById("messages").innerHTML += html;
     });
-</script></pre>
+
+</script>
+
+</pre>
 ?>
