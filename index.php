@@ -1,3 +1,4 @@
+<?php 
 <pre class="wp-block-syntaxhighlighter-code"><!-- include jquery and socket IO -->
 /*
 baixar os dois a baixo e colocar na pasta js
@@ -116,3 +117,4 @@ baixar os dois a baixo e colocar na pasta js
         document.getElementById("messages").innerHTML += html;
     });
 </script></pre>
+?>
