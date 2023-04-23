@@ -48,3 +48,43 @@
         receiver = username;
       }
 </script></pre>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code"><form onsubmit="return sendMessage();">
+  <input id="message" placeholder="Enter message">
+  <input type="submit">
+</form>
+ 
+<ul id="messages"></ul>
+     
+<script>
+    function sendMessage() {
+        // get message
+        var message = document.getElementById("message").value;
+ 
+        // send message to server
+        io.emit("send_message", {
+          sender: sender,
+          receiver: receiver,
+          message: message
+        });
+ 
+        // append your own message
+        var html = "";
+        html += "<li>You said: " + message + "</li>";
+ 
+        document.getElementById("messages").innerHTML += html;
+ 
+        // prevent form from submitting
+        return false;
+    }
+ 
+    // listen from server
+    io.on("new_message", function (data) {
+        var html = "";
+        html += "<li>" + data.sender + " says: " + data.message + "</li>";
+ 
+        document.getElementById("messages").innerHTML += html;
+    });
+</script></pre>
