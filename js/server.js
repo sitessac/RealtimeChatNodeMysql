@@ -73,3 +73,24 @@ socket.on("send_message", function (data) {
         //
     });
 });
+// create body parser instance
+var bodyParser = require("body-parser");
+ 
+// enable URL encoded for POST requests
+app.use(bodyParser.urlencoded());
+ 
+// enable headers required for POST request
+app.use(function (request, result, next) {
+    result.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+});
+ 
+
+// create api to return all messages
+app.post("/get_messages", function (request, result) {
+    // get all messages from database
+    connection.query("SELECT * FROM messages WHERE (sender = '" + request.body.sender + "' AND receiver = '" + request.body.receiver + "') OR (sender = '" + request.body.receiver + "' AND receiver = '" + request.body.sender + "')", function (error, messages) {
+        // response will be in JSON
+        result.end(JSON.stringify(messages));
+    });
+});
