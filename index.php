@@ -1,7 +1,11 @@
 <pre class="wp-block-syntaxhighlighter-code"><!-- include jquery and socket IO -->
-//baixar os dois a baixo e colocar na pasta js
+/*
+baixar os dois a baixo e colocar na pasta js
 <script src="js/jquery.js"></script>
 <script src="js/socket.io.js"></script>
+*/
+    <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script rel="preconect preload" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
  
 <script>
   // creating io instance
