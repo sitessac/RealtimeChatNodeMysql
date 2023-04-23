@@ -9,6 +9,11 @@ var http = require("http").createServer(app);
 var io = require("socket.io")(http);
  
 // start the server
-http.listen(3000, function () {
+http.listen(6000, function () {
     console.log("Server started");
+});
+
+
+io.on("connection", function (socket) {
+    console.log("User connected", socket.id);
 });
