@@ -43,10 +43,34 @@
         document.getElementById("users").innerHTML += html;
     });
  
-    function onUserSelected(username) {
-        // save selected user in global variable
-        receiver = username;
+    <pre class="wp-block-syntaxhighlighter-code">function onUserSelected(username) {
+    // save selected user in global variable
+    receiver = username;
+ 
+    // call an ajax
+    $.ajax({
+      url: "http://localhost:3000/get_messages",
+      method: "POST",
+      data: {
+        sender: sender,
+        receiver: receiver
+      },
+      success: function (response) {
+        console.log(response);
+ 
+        var messages = JSON.parse(response);
+        var html = "";
+         
+        for (var a = 0; a < messages.length; a++) {
+          html += "<li>" + messages[a].sender + " says: " + messages[a].message + "</li>";
+        }
+ 
+        // append in list
+        document.getElementById("messages").innerHTML += html;
       }
+    });
+}</pre>
+
 </script></pre>
 
 
