@@ -19,10 +19,10 @@ var mysql = require("mysql");
 
 // make a connection
 var connection = mysql.createConnection({
-    "host": "localhost",
-    "user": "root",
-    "password": "",
-    "database": "web_chat"
+    "host": "host.sh06.com",
+    "user": "forastey_forasteyros",
+    "password": "#fm830916X",
+    "database": "forastey_web_chat"
 });
 
 // connect
