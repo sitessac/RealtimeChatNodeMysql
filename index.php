@@ -66,7 +66,7 @@ var sender = "";
 
    // call an ajax
     $.ajax({
-      url: "http://localhost:3000/get_messages",
+      url: "http://191.252.223.139:6000/get_messages",
       method: "POST",
       data: {
         sender: sender,
