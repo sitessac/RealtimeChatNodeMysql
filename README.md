@@ -2,6 +2,8 @@
 
 Chat in Node JS & MySQL 1
 
+colorido indiano adnan
+
 modificações e melhoramentos do original:
 
 Realtime Web based Chat in Node JS e MySQL
